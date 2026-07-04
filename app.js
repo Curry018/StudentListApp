@@ -27,35 +27,35 @@ app.use(express.urlencoded({ extended: false }));
  
 // Define routes 
 app.get('/', (req, res) => {
-  const sql = 'SELECT * FROM products';
+  const sql = 'SELECT * FROM student';
   // Fetch data from MySQL
   connection.query( sql , (error, results) => {
     if (error) {
       console.error('Database query error:', error.message); 
-      return res.send('Error Retrieving products'); 
+      return res.send('Error Retrieving student'); 
     }
    // Render HTML page with data
-   res.render('index', { products: results });
+   res.render('index', { students: results });
   });
 });
  
-app.get('/product/:id', (req, res) => {
-  // Extract the product ID from the request parameters
-  const productId = req.params.id;
-  const sql = 'SELECT * FROM products WHERE productId = ?';
-  // Fetch data from MySQL based on the product ID
-  connection.query( sql , [productId], (error, results) => {
+app.get('/student/:id', (req, res) => {
+  // Extract the student ID from the request parameters
+  const studentId = req.params.id;
+  const sql = 'SELECT * FROM student WHERE studentId = ?';
+  // Fetch data from MySQL based on the student ID
+  connection.query( sql , [studentId], (error, results) => {
     if (error) {
       console.error('Database query error:', error.message); 
-      return res.send('Error Retrieving product by ID'); 
+      return res.send('Error Retrieving student by ID'); 
     }
-    // Check if any product with the given ID was found
+    // Check if any student with the given ID was found
     if (results.length > 0) {
-      // Render HTML page with the product data
-      res.render('product', { product: results[0] });
+      // Render HTML page with the student data
+      res.render('student', { student: results[0] });
     } else {
-      // If no product with the given ID was found
-      res.send('Product not found');
+      // If no student with the given ID was found
+      res.send('Student not found');
     }
   });
 });
@@ -66,7 +66,7 @@ app.get('/addStudent', (req, res) => {
 app.post('/addStudent', (req, res) => {
   // Extract student data from the request body
   const { name, quantity, price, image } = req.body;
-  const sql = 'INSERT INTO students (studentName, quantity, price, image) VALUES (?,?,?,?)';
+  const sql = 'INSERT INTO student (studentName, quantity, price, image) VALUES (?,?,?,?)';
   // Insert the new student into the database
   connection.query( sql , [name, quantity, price, image], (error, results) => {
     if (error) {
