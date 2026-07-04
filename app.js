@@ -27,7 +27,8 @@ app.use(express.urlencoded({ extended: false }));
  
 // Define routes 
 app.get('/', (req, res) => {
-  const sql = 'SELECT * FROM student';
+  // Alias DB columns (name, dob) to match the field names used in the EJS views (studentName, dateOfBirth)
+  const sql = "SELECT studentId, name AS studentName, DATE_FORMAT(dob, '%Y-%m-%d') AS dateOfBirth, contact, image FROM student";
   // Fetch data from MySQL
   connection.query( sql , (error, results) => {
     if (error) {
@@ -42,7 +43,7 @@ app.get('/', (req, res) => {
 app.get('/student/:id', (req, res) => {
   // Extract the student ID from the request parameters
   const studentId = req.params.id;
-  const sql = 'SELECT * FROM student WHERE studentId = ?';
+  const sql = "SELECT studentId, name AS studentName, DATE_FORMAT(dob, '%Y-%m-%d') AS dateOfBirth, contact, image FROM student WHERE studentId = ?";
   // Fetch data from MySQL based on the student ID
   connection.query( sql , [studentId], (error, results) => {
     if (error) {
@@ -64,11 +65,11 @@ app.get('/addStudent', (req, res) => {
   res.render('addStudent'); 
 });
 app.post('/addStudent', (req, res) => {
-  // Extract student data from the request body
-  const { name, quantity, price, image } = req.body;
-  const sql = 'INSERT INTO student (studentName, quantity, price, image) VALUES (?,?,?,?)';
+  // Extract student data from the request body (matches addStudent.ejs form field names)
+  const { name, dob, contact, image } = req.body;
+  const sql = 'INSERT INTO student (name, dob, contact, image) VALUES (?,?,?,?)';
   // Insert the new student into the database
-  connection.query( sql , [name, quantity, price, image], (error, results) => {
+  connection.query( sql , [name, dob, contact, image], (error, results) => {
     if (error) {
       // Handle any error that occurs during the database operation
       console.error("Error adding student:", error);
