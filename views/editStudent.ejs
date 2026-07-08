@@ -51,52 +51,46 @@
               <form action="/editStudent/<%= student.studentId %>" method="POST">
 
                 <div class="mb-3">
-                  <label for="name" class="form-label">
-                    Student Name
-                  </label>
+                <label for="name" class="form-label">
+                  Student Name
+                </label>
 
-                  <input type="text" class="form-control" id="name" name="name" value="<%= student.studentName %>"
-                    required>
-                </div>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter student name" required>
+              </div>
 
-                <div class="mb-3">
-                  <label for="quantity" class="form-label">
-                    Quantity
-                  </label>
+              <div class="mb-3">
+                <label for="dob" class="form-label">
+                  Date of Birth
+                </label>
 
-                  <input type="number" class="form-control" id="quantity" name="quantity" min="0" step="1"
-                    value="<%= product.quantity %>" required>
-                </div>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+              </div>
 
-                <div class="mb-3">
-                  <label for="price" class="form-label">
-                    Price ($)
-                  </label>
+              <div class="mb-3">
+                <label for="contact" class="form-label">
+                  Contact Number
+                </label>
 
-                  <input type="number" class="form-control" id="price" name="price" min="0" step="0.01"
-                    value="<%= product.price %>" required>
-                </div>
+                <input type="tel" class="form-control" id="contact" name="contact" placeholder="Enter contact number" required>
+              </div>
 
-                <div class="mb-3">
-                  <label class="form-label">
-                    Current Image
-                  </label>
+              <div class="mb-4">
+                <label for="image" class="form-label">
+                  Image URL
+                </label>
 
-                  <div class="text-center">
-                    <img src="<%= product.image %>" alt="<%= product.productName %>" class="img-fluid rounded border"
-                      style="max-height: 200px;">
-                  </div>
-                </div>
+                <input type="text" class="form-control" id="image" name="image" placeholder="Enter image URL" required>
+              </div>
 
-                <div class="d-grid gap-2">
+              <div class="d-grid gap-2">
 
-                  <button type="submit" class="btn btn-warning">
-                    Update Product
-                  </button>
+                <button type="submit" class="btn btn-success">
+                  Update Student
+                </button>
 
-                  <a href="/" class="btn btn-secondary">
-                    Cancel
-                  </a>
+                <a href="/" class="btn btn-secondary">
+                  Cancel
+                </a>
 
                 </div>
 

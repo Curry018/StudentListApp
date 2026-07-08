@@ -81,35 +81,35 @@ app.post('/addStudent', (req, res) => {
   });
 });
 
-app.get('/editProduct/:id', (req,res) => {
-  const productId = req.params.id;
-  const sql = 'SELECT * FROM products WHERE productId = ?';
-  // Fetch data from MySQL based on the product ID
-  connection.query( sql , [productId], (error, results) => {
+app.get('/editStudent/:id', (req,res) => {
+  const studentId = req.params.id;
+  const sql = 'SELECT * FROM student WHERE studentId = ?';
+  // Fetch data from MySQL based on the student ID
+  connection.query( sql , [studentId], (error, results) => {
     if (error) {
       console.error('Database query error:', error.message); 
-      return res.send('Error retrieving product by ID'); 
+      return res.send('Error retrieving student by ID'); 
     }
-    // Check if any product with the given ID was found
+    // Check if any student with the given ID was found
     if (results.length > 0) {
-      // Render HTML page with the product data
-      res.render('editProduct', { product: results[0] });
+      // Render HTML page with the student data
+      res.render('editStudent', { student: results[0] });
     } else {
-      // If no product with the given ID was found, render a 404 page or handle it accordingly
-      res.send('Product not found');
+      // If no student with the given ID was found, render a 404 page or handle it accordingly
+      res.send('Student not found');
     }
   });
 });
 
-// Add a route in app.js to delete a product from the database.
-app.get('/deleteProduct/:id', (req, res) => {
-  const productId = req.params.id;
-  const sql = 'DELETE FROM products WHERE productId = ?';
-  connection.query( sql , [productId], (error, results) => {
+// Add a route in app.js to delete a student from the database.
+app.get('/deleteStudent/:id', (req, res) => {
+  const studentId = req.params.id;
+  const sql = 'DELETE FROM student WHERE studentId = ?';
+  connection.query( sql , [studentId], (error, results) => {
     if (error) {
       // Handle any error that occurs during the database operation
-      console.error("Error deleting product:", error);
-      res.send('Error deleting product');
+      console.error("Error deleting student:", error);
+      res.send('Error deleting student');
     } else {
       // Send a success response
       res.redirect('/');
@@ -117,17 +117,17 @@ app.get('/deleteProduct/:id', (req, res) => {
   });
 });
 
-app.post('/editProduct/:id', (req, res) => {
-  const productId = req.params.id;
-  // Extract product data from the request body
-  const { name, quantity, price } = req.body;
-  const sql = 'UPDATE products SET productName = ? , quantity = ?, price = ? WHERE productId = ?';
-  // Insert the new product into the database
-  connection.query( sql , [name, quantity, price, productId], (error, results) => {
+app.post('/editStudent/:id', (req, res) => {
+  const studentId = req.params.id;
+  // Extract student data from the request body
+  const { name, dob, contact, image } = req.body;
+  const sql = 'UPDATE student SET name = ? , dob = ?, contact = ?, image = ? WHERE studentId = ?';
+  // Insert the new student into the database
+  connection.query( sql , [name, dob, contact, image, studentId], (error, results) => {
     if (error) {
       // Handle any error that occurs during the database operation
-      console.error("Error updating product:", error);
-      res.send('Error updating product');
+      console.error("Error updating student:", error);
+      res.send('Error updating student');
     } else {
       // Send a success response
       res.redirect('/');
