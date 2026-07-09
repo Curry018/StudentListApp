@@ -42,10 +42,10 @@
         <% for(let i=0; i < students.length; i++) { %>
           <tr>
             <td><a href="/student/<%= students[i].studentId %>"><%= students[i].studentName %></a></td>
+            <td><img src="/images/<%= students[i].image %>" width="95px"></td>
             <td><%= students[i].studentId %></td>
             <td><%= students[i].dateOfBirth %></td>
             <td><%= students[i].contact %></td>
-            <td><img src="<%= students[i].image %>" width="95px"></td>
               <!-- Edit Link -->
               <td><a href="/editStudent/<%= students[i].studentId %>">Edit</a></td>
               <!-- Delete Link -->

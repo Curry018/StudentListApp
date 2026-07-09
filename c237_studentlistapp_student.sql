@@ -31,7 +31,7 @@ CREATE TABLE `student` (
   `contact` varchar(10) NOT NULL,
   `image` varchar(1000) NOT NULL,
   PRIMARY KEY (`studentId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'John Edward','2007-05-08','98765432','https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Sm9obnxlbnwwfHwwfHx8MA%3D%3D'),(2,'Mary Thompson','2006-02-06','98765678','https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFkeXxlbnwwfHwwfHx8MA%3D%3D'),(3,'Benny Teo','2006-08-18','98789879','https://plus.unsplash.com/premium_photo-1707932500695-3079acd22bd2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8QmVubnl8ZW58MHx8MHx8fDA%3D');
+INSERT INTO `student` VALUES (1,'bob Edward','2007-05-10','98765432','Bob.avif'),(2,'Mary Thompson','2006-02-06','98765678','Mary.avif'),(3,'Benny Teo','2006-08-18','98789879','Benny.avif');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-07-02 10:10:34
+-- Dump completed on 2026-07-09 10:24:54
